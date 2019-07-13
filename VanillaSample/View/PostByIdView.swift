@@ -28,6 +28,14 @@ class PostByIdView: UIView {
         return button
     }()
     
+    let allPostsBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("All Posts", for: UIControl.State())
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return button
+    }()
+    
     let postBody: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +47,7 @@ class PostByIdView: UIView {
         addSubview(postIdTextField)
         addSubview(fetchBtn)
         addSubview(postBody)
+        addSubview(allPostsBtn)
         setupViews()
     }
     
@@ -52,6 +61,9 @@ class PostByIdView: UIView {
         fetchBtn.topAnchor.constraint(equalTo: postIdTextField.bottomAnchor, constant: 10).isActive = true
         fetchBtn.heightAnchor.constraint(equalToConstant: 40)
         fetchBtn.centerXAnchor.constraint(equalTo: postIdTextField.centerXAnchor).isActive = true
+        
+        allPostsBtn.topAnchor.constraint(equalTo: fetchBtn.bottomAnchor, constant: 40).isActive = true
+        allPostsBtn.centerXAnchor.constraint(equalTo: fetchBtn.centerXAnchor).isActive = true
         
         postBody.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         postBody.bottomAnchor.constraint(equalTo: postIdTextField.topAnchor).isActive = true

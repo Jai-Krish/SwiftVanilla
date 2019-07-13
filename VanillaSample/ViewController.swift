@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     func setupInteraction() {
         postView.fetchBtn.addTarget(self, action: #selector(onFetchTap), for: .touchUpInside)
+        postView.allPostsBtn.addTarget(self, action: #selector(onAllPostsTap), for: .touchUpInside)
     }
     
     @objc func onFetchTap() {
@@ -46,6 +47,11 @@ class ViewController: UIViewController {
                 print("Error", err)
             }
         }.resume()
+    }
+    
+    @objc func onAllPostsTap() {
+        let layout = UICollectionViewFlowLayout()
+        navigationController?.pushViewController(PostListController(collectionViewLayout: layout), animated: true)
     }
 }
 
